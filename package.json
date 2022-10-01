@@ -1,0 +1,37 @@
+{
+  "name": "react-use-search-params-state",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Juan Schwindt",
+    "email": "juan@schwindt.org"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+  },
+  "dependencies": {
+    "react-router-dom": "^6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jschwindt/react-use-search-params-state.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jschwindt/react-use-search-params-state/issues"
+  },
+  "homepage": "https://github.com/jschwindt/react-use-search-params-state#readme"
+}
