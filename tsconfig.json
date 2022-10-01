@@ -1,23 +1,4 @@
 {
-<<<<<<< HEAD
-  "compilerOptions": {
-    "target": "es2015",
-    "module": "es2015",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "src/**/*.ts",
-  ],
-  "exclude": [
-    "node_modules",
-    "lib"
-  ]
-}
-=======
   "include": ["src"],
   "exclude": [
     "dist",
@@ -43,4 +24,3 @@
     "forceConsistentCasingInFileNames": true,
   }
 }
->>>>>>> aa01c87 (Initial commit)
