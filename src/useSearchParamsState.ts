@@ -56,7 +56,6 @@ const getAllCurrentParams = (searchParams: URLSearchParams) => {
       allUrlParams[key] = value
     }
   })
-  console.log('allUrlParams', allUrlParams)
   return allUrlParams
 }
 
