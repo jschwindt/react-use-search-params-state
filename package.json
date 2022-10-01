@@ -1,37 +1,57 @@
 {
   "name": "react-use-search-params-state",
-  "version": "0.1.0",
-  "description": "",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "files": [
-    "lib"
-  ],
+  "version": "1.0.0",
+  "description": "React hook to keep state using URL search params. Based on useSearchParams from react-router-dom@6",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "scripts": {
-    "prepublish": "tsc"
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "lint": "eslint \"{**/*,*}.{js,ts,jsx,tsx}\"",
+    "prettier": "prettier --write \"{src,tests,example/src}/**/*.{js,ts,jsx,tsx}\"",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run prettier && npm run lint"
   },
-  "keywords": [],
-  "author": {
-    "name": "Juan Schwindt",
-    "email": "juan@schwindt.org"
-  },
+  "keywords": [
+    "react",
+    "react-router-dom-v6",
+    "typescript",
+    "react-use-search-params-state"
+  ],
+  "author": "Juan Schwindt (jschwindt)",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.3.5"
+    "@types/react": "^18.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "prettier": "^2.7.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-router-dom": "^6.4.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.3"
   },
   "peerDependencies": {
-    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
-    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
-  },
-  "dependencies": {
-    "react-router-dom": "^6.0.0"
+    "react": ">=16"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jschwindt/react-use-search-params-state.git"
+    "url": "git+https://github.com/jschwindt/react-use-search-params-state"
   },
   "bugs": {
     "url": "https://github.com/jschwindt/react-use-search-params-state/issues"
   },
-  "homepage": "https://github.com/jschwindt/react-use-search-params-state#readme"
+  "homepage": "https://github.com/jschwindt/react-use-search-params-state#readme",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ]
 }
