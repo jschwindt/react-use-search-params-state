@@ -60,31 +60,25 @@ const Filters = () => {
       Filters:
       <div>
         <label>
-          Min price: <span>{JSON.stringify(filterParams.minPrice)}</span>
+          Min price: <span>{filterParams.minPrice}</span>
         </label>
-        <button onClick={() => setFilterParams({ minPrice: Math.floor(Math.random() * 1000) })}>[change]</button>
+        <button onClick={() => setFilterParams({ minPrice: 100 })}>[set minPrice to 100]</button>
       </div>
       <div>
         <label>
-          Max price: <span>{JSON.stringify(filterParams.maxPrice)}</span>
+          Max price: <span>{filterParams.maxPrice}</span>
         </label>
-        <button onClick={() => setFilterParams({ maxPrice: Math.floor(Math.random() * 1000) })}>[change]</button>
+        <button onClick={() => setFilterParams({ maxPrice: 200 })}>[set maxPrice to 200]</button>
       </div>
       <div>
         <label>
-          Years: <span>{JSON.stringify(filterParams.years)}</span>
+          Years: <span>{filterParams.years?.join(', ')}</span>
         </label>
-        <button
-          onClick={() =>
-            setFilterParams({ years: [Math.floor(Math.random() * 100) + 2000, Math.floor(Math.random() * 100) + 2000] })
-          }
-        >
-          [change]
-        </button>
+        <button onClick={() => setFilterParams({ years: [2001, 2010, 2022] })}>[set some years]</button>
       </div>
       <div>
         <label>
-          Types: <span>{JSON.stringify(filterParams.types)}</span>
+          Types: <span>{filterParams.types?.join(', ')}</span>
         </label>
         <button
           onClick={() =>
