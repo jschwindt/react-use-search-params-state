@@ -68,7 +68,7 @@ When you need to change any of the values, use the `set...` function with an obj
 The `set...` function will update only the params that are present in the object. The rest of the params will remain the same.
 This allow to have multiple components that can save their state in the URL without interfering with each other.
 
-For a complete example, see the `example/` folder.
+For a complete example, see the `example/` folder or this [CodeSandbox](https://codesandbox.io/s/angry-morning-xktesm?file=/src/Example.tsx).
 
 ## TODO
 
