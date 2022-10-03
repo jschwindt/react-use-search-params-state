@@ -1,6 +1,6 @@
 # react-use-search-params-state
 
-React package to use URL search params as state. It has the same API as `useState`.
+React hook to use URL search params as state. It has the same API as `useState` and works with `react-router-dom-v6`.
 
 ## Install
 
@@ -51,7 +51,7 @@ const TestFilters = () => {
 }
 ```
 
-When you need to change any of the values, use the set function with an object containing the name of the param and the new value(s):
+When you need to change any of the values, use the `set...` function with an object containing the name of the param and the new value(s):
 
 ```tsx
 <div>
@@ -65,7 +65,8 @@ When you need to change any of the values, use the set function with an object c
 </div>
 ```
 
-The set function will update only the params that are present in the object. The rest of the params will remain the same.
+The `set...` function will update only the params that are present in the object. The rest of the params will remain the same.
+This allow to have multiple components that can save their state in the URL without interfering with each other.
 
 For a complete example, see the `example/` folder.
 
