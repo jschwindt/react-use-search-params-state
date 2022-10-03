@@ -4,8 +4,8 @@ type DefaultType = string | number | boolean | Array<string | number | boolean> 
 
 type SearchParamStateType = {
   type: 'string' | 'number' | 'boolean'
-  defaultValue: DefaultType
-  isArray?: boolean
+  default: DefaultType
+  multiple?: boolean
 }
 
 export type SearchParamsStateType = Record<string, SearchParamStateType>
@@ -16,11 +16,11 @@ const paramToBool = (paramName: string, paramDefinition: SearchParamStateType, s
   if (paramValue === 'true' || paramValue === '1' || paramValue === '') return true
   if (paramValue === 'false' || paramValue === '0') return false
 
-  return paramDefinition.defaultValue
+  return paramDefinition.default
 }
 
 const paramToValue = (paramName: string, paramDefinition: SearchParamStateType, searchParams: URLSearchParams) => {
-  if (paramDefinition.isArray) {
+  if (paramDefinition.multiple) {
     const paramValue = searchParams.getAll(paramName)
     if (paramValue.length > 0) {
       return paramDefinition.type === 'number' ? paramValue.map((value) => Number(value)) : paramValue
@@ -31,7 +31,7 @@ const paramToValue = (paramName: string, paramDefinition: SearchParamStateType, 
       return paramDefinition.type === 'number' ? Number(paramValue) : paramValue
     }
   }
-  return paramDefinition.defaultValue
+  return paramDefinition.default
 }
 
 const getValues = (paramsDefinition: SearchParamsStateType, searchParams: URLSearchParams) => {

@@ -16,89 +16,61 @@ yarn add react-use-search-params-state
 
 ## Usage
 
+Import the hook and the params definition type.
+Then create a params definition object containing the params you want to use.
+
+The key is the name of the param. The value is an object with the following properties:
+
+`type`: the type of the param. Can be `string`, `number` or `boolean`.
+
+`default`: the default value of the param. If the param is not present in the URL, this value will be used.
+
+`multiple`: (optional) if the param can have multiple values. If `true`, the value will be an array of the type specified in `type`.
+
+Example:
+
 ```tsx
-import React from 'react'
-import { useSearchParamsState, SearchParamStateType } from 'react-use-search-params-state'
+import { useSearchParamsState, SearchParamsStateType } from 'react-use-search-params-state'
 
-const filtersDefaults: SearchParamStateType[] = [
-  {
-    name: 'minPrice',
-    type: 'number',
-    defaultValue: null,
-  },
-  {
-    name: 'maxPrice',
-    type: 'number',
-    defaultValue: null,
-  },
-  {
-    name: 'isSold',
-    type: 'boolean',
-    defaultValue: false,
-  },
-  {
-    name: 'types',
-    type: 'string',
-    defaultValue: [],
-    isArray: true,
-  },
-  {
-    name: 'years',
-    type: 'number',
-    defaultValue: null,
-    isArray: true,
-  },
-]
-
-const Filters = () => {
-  const [filterParams, setFilterParams] = useSearchParamsState(filtersDefaults)
-
-  console.log('filterParams', filterParams)
-
-  return (
-    <div>
-      Filters:
-      <div>
-        <label>
-          Min price: <span>{filterParams.minPrice}</span>
-        </label>
-        <button onClick={() => setFilterParams({ minPrice: 100 })}>[set minPrice to 100]</button>
-      </div>
-      <div>
-        <label>
-          Max price: <span>{filterParams.maxPrice}</span>
-        </label>
-        <button onClick={() => setFilterParams({ maxPrice: 200 })}>[set maxPrice to 200]</button>
-      </div>
-      <div>
-        <label>
-          Years: <span>{filterParams.years?.join(', ')}</span>
-        </label>
-        <button onClick={() => setFilterParams({ years: [2001, 2010, 2022] })}>[set some years]</button>
-      </div>
-      <div>
-        <label>
-          Types: <span>{filterParams.types?.join(', ')}</span>
-        </label>
-        <button
-          onClick={() =>
-            setFilterParams({
-              types: ['type1', 'type2', 'type3', 'type4', 'type5'].slice(0, Math.floor(Math.random() * 6)),
-            })
-          }
-        >
-          [change]
-        </button>
-      </div>
-      <div>
-        <label>Sold: </label>
-        <input
-          type='checkbox'
-          checked={filterParams.isSold}
-          onChange={(e) => setFilterParams({ isSold: e.target.checked })}
-        />
-      </div>
-    </div>
-  )
+const filtersDefaults: SearchParamsStateType = {
+  minPrice: { type: 'number', default: null },
+  maxPrice: { type: 'number', default: null },
+  isSold: { type: 'boolean', default: true },
+  types: { type: 'string', default: null, multiple: true },
+  years: { type: 'number', default: [], multiple: true },
 }
 ```
+
+Use the hook in your functional component the same way you use `useState`:
+
+```tsx
+const TestFilters = () => {
+  const [filterParams, setFilterParams] = useSearchParamsState(filtersDefaults)
+
+  return <div>Min Price: {filterParams.minPrice}</div>
+}
+```
+
+When you need to change any of the values, use the set function with a dictionary containing the name of the param and the new value(s):
+
+```tsx
+<div>
+  Min price:
+  <input
+    type='text'
+    value={filterParams.minPrice ?? ''}
+    onChange={(e) => setFilterParams({ minPrice: e.target.value })}
+  />
+  <button onClick={() => setFilterParams({ minPrice: 100 })}>set minPrice to 100</button>
+</div>
+```
+
+For a complete example, see the `example/` folder.
+
+## TODO
+
+- [ ] Add tests
+
+## License
+
+[ISC](http://opensource.org/licenses/ISC) © [Juan Schwindt](https://github.com/jschwindt)

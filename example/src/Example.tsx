@@ -2,16 +2,16 @@ import React from 'react'
 import { useSearchParamsState, SearchParamsStateType } from 'react-use-search-params-state'
 
 const filtersDefaults: SearchParamsStateType = {
-  minPrice: { type: 'number', defaultValue: null },
-  maxPrice: { type: 'number', defaultValue: null },
-  isSold: { type: 'boolean', defaultValue: true },
-  types: { type: 'string', defaultValue: null, isArray: true },
-  years: { type: 'number', defaultValue: [], isArray: true },
+  minPrice: { type: 'number', default: null },
+  maxPrice: { type: 'number', default: null },
+  isSold: { type: 'boolean', default: true },
+  types: { type: 'string', default: null, multiple: true },
+  years: { type: 'number', default: [], multiple: true },
 }
 
 const sortDefaults: SearchParamsStateType = {
-  orderBy: { type: 'string', defaultValue: 'price' },
-  orderDir: { type: 'string', defaultValue: 'asc' },
+  orderBy: { type: 'string', default: 'price' },
+  orderDir: { type: 'string', default: 'asc' },
 }
 
 const TestFilters = () => {
@@ -107,7 +107,7 @@ const TestSort = () => {
   )
 }
 
-const Test = () => {
+const Example = () => {
   return (
     <div>
       <h1>Test</h1>

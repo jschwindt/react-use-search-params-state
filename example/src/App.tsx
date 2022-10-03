@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Routes, Route, Outlet, Link } from 'react-router-dom'
-import Test from './Test'
+import Example from './Example'
 
 export default function App() {
   return (
@@ -9,7 +9,7 @@ export default function App() {
 
       <Routes>
         <Route path='/' element={<Layout />}>
-          <Route index element={<Test />} />
+          <Route index element={<Example />} />
           <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>
