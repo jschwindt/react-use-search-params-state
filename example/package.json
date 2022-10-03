@@ -14,7 +14,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.1",
     "react-scripts": "5.0.1",
-    "react-use-search-params-state": "github:jschwindt/react-use-search-params-state",
+    "react-use-search-params-state": "^1.0.0",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
