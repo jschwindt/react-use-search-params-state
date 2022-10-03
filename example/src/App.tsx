@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
-import Test from "./Test";
+import * as React from 'react'
+import { Routes, Route, Outlet, Link } from 'react-router-dom'
+import Test from './Test'
 
 export default function App() {
   return (
@@ -8,13 +8,13 @@ export default function App() {
       <h1>useSearchParamsState Example</h1>
 
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<Test />} />
-          <Route path="*" element={<NoMatch />} />
+          <Route path='*' element={<NoMatch />} />
         </Route>
       </Routes>
     </div>
-  );
+  )
 }
 
 function Layout() {
@@ -23,12 +23,10 @@ function Layout() {
       <nav>
         <ul>
           <li>
-            <Link to="/">
-              Test with defaults
-            </Link>
+            <Link to='/'>Test with defaults</Link>
           </li>
           <li>
-            <Link to="/?minPrice=15&maxPrice=25&years=2020&years=2021&years=2022&types=t1&types=t2&types=t3&isSold=false&orderBy=date&orderDir=desc">
+            <Link to='/?minPrice=15&maxPrice=25&years=2020&years=2022&types=t1&types=t2&types=t3&isSold=false&orderBy=date&orderDir=desc'>
               Test with params
             </Link>
           </li>
@@ -39,7 +37,7 @@ function Layout() {
 
       <Outlet />
     </div>
-  );
+  )
 }
 
 function NoMatch() {
@@ -47,8 +45,8 @@ function NoMatch() {
     <div>
       <h2>Nothing to see here!</h2>
       <p>
-        <Link to="/">Go to the home page</Link>
+        <Link to='/'>Go to the home page</Link>
       </p>
     </div>
-  );
+  )
 }

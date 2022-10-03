@@ -1,45 +1,48 @@
 import { useSearchParams } from 'react-router-dom'
 
-export type SearchParamStateType = {
-  name: string
+type DefaultType = string | number | boolean | Array<string | number | boolean> | null
+
+type SearchParamStateType = {
   type: 'string' | 'number' | 'boolean'
-  defaultValue: string | number | boolean | Array<string | number | boolean> | null
+  defaultValue: DefaultType
   isArray?: boolean
 }
 
-const paramToBool = (param: SearchParamStateType, searchParams: URLSearchParams) => {
-  const paramValue = searchParams.get(param.name)
+export type SearchParamsStateType = Record<string, SearchParamStateType>
+
+const paramToBool = (paramName: string, paramDefinition: SearchParamStateType, searchParams: URLSearchParams) => {
+  const paramValue = searchParams.get(paramName)
   // The only presence of a boolean param (value === '') is considered true
   if (paramValue === 'true' || paramValue === '1' || paramValue === '') return true
   if (paramValue === 'false' || paramValue === '0') return false
 
-  return param.defaultValue
+  return paramDefinition.defaultValue
 }
 
-const paramToValue = (param: SearchParamStateType, searchParams: URLSearchParams) => {
-  if (param.isArray) {
-    const paramValue = searchParams.getAll(param.name)
+const paramToValue = (paramName: string, paramDefinition: SearchParamStateType, searchParams: URLSearchParams) => {
+  if (paramDefinition.isArray) {
+    const paramValue = searchParams.getAll(paramName)
     if (paramValue.length > 0) {
-      return param.type === 'number' ? paramValue.map((value) => Number(value)) : paramValue
+      return paramDefinition.type === 'number' ? paramValue.map((value) => Number(value)) : paramValue
     }
   } else {
-    const paramValue = searchParams.get(param.name)
+    const paramValue = searchParams.get(paramName)
     if (paramValue) {
-      return param.type === 'number' ? Number(paramValue) : paramValue
+      return paramDefinition.type === 'number' ? Number(paramValue) : paramValue
     }
   }
-  return param.defaultValue
+  return paramDefinition.defaultValue
 }
 
-const getValues = (paramsDefinition: SearchParamStateType[], searchParams: URLSearchParams) => {
+const getValues = (paramsDefinition: SearchParamsStateType, searchParams: URLSearchParams) => {
   const values: any = {}
-  paramsDefinition.forEach((param) => {
-    if (param.type === 'boolean') {
-      values[param.name] = paramToBool(param, searchParams)
+  for (const [paramName, paramDefinition] of Object.entries(paramsDefinition)) {
+    if (paramDefinition.type === 'boolean') {
+      values[paramName] = paramToBool(paramName, paramDefinition, searchParams)
     } else {
-      values[param.name] = paramToValue(param, searchParams)
+      values[paramName] = paramToValue(paramName, paramDefinition, searchParams)
     }
-  })
+  }
   return values
 }
 
@@ -59,7 +62,7 @@ const getAllCurrentParams = (searchParams: URLSearchParams) => {
   return allUrlParams
 }
 
-export const useSearchParamsState = (paramsDefinition: SearchParamStateType[]) => {
+export const useSearchParamsState = (paramsDefinition: SearchParamsStateType) => {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const values = getValues(paramsDefinition, searchParams)
