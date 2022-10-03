@@ -51,7 +51,7 @@ const TestFilters = () => {
 }
 ```
 
-When you need to change any of the values, use the set function with a dictionary containing the name of the param and the new value(s):
+When you need to change any of the values, use the set function with an object containing the name of the param and the new value(s):
 
 ```tsx
 <div>
@@ -64,6 +64,8 @@ When you need to change any of the values, use the set function with a dictionar
   <button onClick={() => setFilterParams({ minPrice: 100 })}>set minPrice to 100</button>
 </div>
 ```
+
+The set function will update only the params that are present in the object. The rest of the params will remain the same.
 
 For a complete example, see the `example/` folder.
 

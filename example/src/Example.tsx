@@ -27,18 +27,17 @@ const TestFilters = () => {
       <div>
         Min price:{' '}
         <input
-          type="text"
+          type='text'
           value={filterParams.minPrice ?? ''}
           onChange={(e) => setFilterParams({ minPrice: e.target.value })}
-        />
-        {' '}
+        />{' '}
         <button onClick={() => setFilterParams({ minPrice: 100 })}>set minPrice to 100</button>
       </div>
 
       <div>
         Max price:{' '}
         <input
-          type="text"
+          type='text'
           value={filterParams.maxPrice ?? ''}
           onChange={(e) => setFilterParams({ maxPrice: e.target.value })}
         />
@@ -49,7 +48,7 @@ const TestFilters = () => {
         {[2019, 2020, 2021, 2022].map((year) => (
           <div key={year}>
             <input
-              type="checkbox"
+              type='checkbox'
               checked={filterParams.years.includes(year)}
               onChange={(e) => onChangeYear(year, e.target.checked)}
             />
@@ -89,19 +88,13 @@ const TestSort = () => {
   return (
     <div>
       Sort by:{' '}
-      <select
-        onChange={(e) => setSortParams({ orderBy: e.target.value })}
-        value={sortParams.orderBy}
-      >
-        <option value="price">Price</option>
-        <option value="date">Date</option>
+      <select onChange={(e) => setSortParams({ orderBy: e.target.value })} value={sortParams.orderBy}>
+        <option value='price'>Price</option>
+        <option value='date'>Date</option>
       </select>
-      <select
-        onChange={(e) => setSortParams({ orderDir: e.target.value })}
-        value={sortParams.orderDir}
-      >
-        <option value="asc">asc</option>
-        <option value="desc">desc</option>
+      <select onChange={(e) => setSortParams({ orderDir: e.target.value })} value={sortParams.orderDir}>
+        <option value='asc'>asc</option>
+        <option value='desc'>desc</option>
       </select>
     </div>
   )
@@ -117,4 +110,4 @@ const Example = () => {
   )
 }
 
-export default Test
+export default Example
