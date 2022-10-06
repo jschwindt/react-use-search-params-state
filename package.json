@@ -1,6 +1,6 @@
 {
   "name": "react-use-search-params-state",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React hook to keep state using URL search params. Based on useSearchParams from react-router-dom@6",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",

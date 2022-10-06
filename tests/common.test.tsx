@@ -13,8 +13,8 @@ const testDefaults: SearchParamsStateType = {
 const TestedComponent = () => {
   const [searchParams, setSearchParams] = useSearchParamsState(testDefaults)
 
-  console.log('searchParams', searchParams)
-  console.log(Object.entries(searchParams))
+  // console.log('searchParams', searchParams)
+  // console.log(Object.entries(searchParams))
 
   return (
     <div>
@@ -45,7 +45,7 @@ const App = () => (
 describe('Common render', () => {
   it('renders without crashing', () => {
     renderWithRouter(<App />, 'http://localhost/')
-    screen.debug()
+    // screen.debug()
     expect(screen.getByText('"Initial Value"')).toBeInTheDocument()
   })
 })
