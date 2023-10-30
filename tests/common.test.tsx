@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { renderWithRouter } from './__utils__/renderWithRouter'
 import 'jest-canvas-mock'
+import '@testing-library/jest-dom'
 import { screen } from '@testing-library/react'
 
 import { useSearchParamsState, SearchParamsStateType } from '../src/useSearchParamsState'
