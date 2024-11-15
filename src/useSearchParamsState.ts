@@ -72,7 +72,7 @@ export const useSearchParamsState = (paramsDefinition: SearchParamsStateType) =>
     for (const key in newValues) {
       if (Object.prototype.hasOwnProperty.call(newValues, key)) {
         const value = newValues[key]
-        if (value === '' || (Array.isArray(value) && value.length === 0)) {
+        if (value === '' || (Array.isArray(value) && value.length === 0) || paramsDefinition[key].default === value) {
           delete currentParams[key]
           delete newValues[key]
         }
