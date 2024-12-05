@@ -1,7 +1,7 @@
 {
   "name": "react-use-search-params-state",
-  "version": "1.0.4",
-  "description": "React hook to keep state using URL search params. Based on useSearchParams from react-router-dom@6",
+  "version": "2.0.0",
+  "description": "React hook to keep state using URL search params. Based on useSearchParams from react-router@7",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/esm/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "keywords": [
     "react",
-    "react-router-dom-v6",
+    "react-router-v7",
     "typescript",
     "react-use-search-params-state"
   ],
@@ -42,7 +42,6 @@
     "prettier": "^3.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.17.0",
     "ts-jest": "^29.1.1",
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
@@ -63,5 +62,8 @@
     "src",
     "LICENSE",
     "README.md"
-  ]
+  ],
+  "dependencies": {
+    "react-router": "^7.0.2"
+  }
 }

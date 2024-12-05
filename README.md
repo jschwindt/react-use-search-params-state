@@ -1,6 +1,8 @@
 # react-use-search-params-state
 
-React hook to use URL search params as state. It has the same API as `useState` and works with `react-router-dom-v6`.
+React hook to use URL search params as state. It has the same API as `useState` and works with `react-router v7`.
+
+Note: for react-router v6, use version 1.0.x of this library.
 
 ## Install
 

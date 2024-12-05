@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router'
 
 type DefaultType = string | number | boolean | Array<string | number | boolean> | null
 
